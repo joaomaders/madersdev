@@ -788,6 +788,8 @@ body.dark-mode .job-details li {
     font-size: 18px;
     cursor: pointer;
     transition: background-color var(--transition);
+    text-decoration: none;
+    text-align: center;
 }
 
 .side-select:hover {
