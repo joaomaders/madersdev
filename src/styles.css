@@ -728,13 +728,12 @@ body.dark-mode .job-details li {
     margin: 0 auto 3rem;
 }
 
-.contact-item h4 {
+.contact-item p {
     margin-bottom: 0.5rem;
     color: var(--primary-color);
 }
 
-.contact-item a,
-.contact-item p {
+.contact-item a {
     color: var(--text-color);
     text-decoration: none;
     transition: color var(--transition);
