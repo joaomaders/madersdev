@@ -93,6 +93,7 @@ body.light-mode {
     --footer-text:    var(--color-white) !important;
     --primary-color:  var(--color-yellow) !important;
     --primary-dark:   var(--color-yellow-dark) !important;
+    --color-yellow: #F6BE00;
 }
 
 body.dark-mode {
@@ -729,7 +730,7 @@ body.dark-mode .job-details li {
 
 .contact-item h4 {
     margin-bottom: 0.5rem;
-    color: var(--primary-dark);
+    color: var(--primary-color);
 }
 
 .contact-item a,
