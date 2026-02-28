@@ -1,6 +1,110 @@
-/* ==========================================================================
-   1. RESET & BASE
-   ========================================================================== */
+:root {
+    --color-yellow:       #efcc6e;
+    --color-yellow-dark:  #d4b45a;
+    --color-beige:        #cfbeae;
+    --color-brown:        #968a79;
+    --color-black:        #0b0907;
+    --color-white:        #ffffff;
+
+    --primary-color:      var(--color-yellow);
+    --primary-dark:       var(--color-yellow-dark);
+
+    --bg-color:           #f6f5f3;
+    --bg-alt:             #e5e5e5;
+    --text-color:         var(--color-black);
+    --text-secondary:     #666666;
+    --text-body:          var(--color-black);
+    --panel-bg:           var(--color-white);
+    --panel-text:         #333333;
+    --border-color:       #dcd4c9;
+
+    --footer-bg:          var(--text-color);
+    --footer-text:        var(--color-white);
+
+    --surface-elevated:       var(--color-white);
+    --surface-elevated-text:  #333333;
+
+    --btn-text:           #333333;
+    --shadow-btn:         0 8px 22px rgba(11, 9, 7, 0.08);
+    --btn-sheen-color:    rgba(255, 255, 255, 0.12);
+    --btn-sheen-opacity:  0.9;
+
+    --radius-sm:          6px;
+    --radius-md:          12px;
+    --radius-pill:        20px;
+    --radius-circle:      50%;
+    --transition:         0.3s;
+    --section-padding:    6rem 0;
+
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color:              #0b0907;
+        --bg-alt:                #2a2a2a;
+        --text-color:            #e8e5e2;
+        --text-secondary:        #cfcfcf;
+        --text-body:             #d0d0d0;
+        --panel-bg:              #2a2a2a;
+        --panel-text:            #e0e0e0;
+        --border-color:          #333333;
+        --footer-bg:             #070707;
+        --footer-text:           #dcdcdc;
+        --surface-elevated:      #404040;
+        --surface-elevated-text: #e0e0e0;
+        --shadow-btn:            0 6px 18px rgba(0, 0, 0, 0.45);
+        --btn-sheen-color:       rgba(255, 255, 255, 0.06);
+        --btn-sheen-opacity:     0.6;
+
+        color-scheme: dark;
+    }
+}
+
+body.light-mode {
+    --bg-color:              #f6f5f3;
+    --bg-alt:                #e5e5e5;
+    --text-color:            var(--color-black);
+    --text-secondary:        #666666;
+    --text-body:             var(--color-black);
+    --panel-bg:              var(--color-white);
+    --panel-text:            #333333;
+    --border-color:          #dcd4c9;
+    --footer-bg:             var(--color-black);
+    --footer-text:           var(--color-white);
+    --primary-color:         var(--color-yellow);
+    --primary-dark:          var(--color-yellow-dark);
+    --surface-elevated:      var(--color-white);
+    --surface-elevated-text: #333333;
+    --shadow-btn:            0 8px 22px rgba(11, 9, 7, 0.08);
+    --btn-sheen-color:       rgba(255, 255, 255, 0.12);
+    --btn-sheen-opacity:     0.9;
+    --color-yellow:          #F6BE00;
+
+    color-scheme: light;
+}
+
+body.dark-mode {
+    --bg-color:              #0b0907;
+    --bg-alt:                #2a2a2a;
+    --text-color:            #e8e5e2;
+    --text-secondary:        #cfcfcf;
+    --text-body:             #d0d0d0;
+    --panel-bg:              #2a2a2a;
+    --panel-text:            #e0e0e0;
+    --border-color:          #333333;
+    --footer-bg:             #070707;
+    --footer-text:           #dcdcdc;
+    --primary-color:         var(--color-yellow);
+    --primary-dark:          var(--color-yellow-dark);
+    --surface-elevated:      #404040;
+    --surface-elevated-text: #e0e0e0;
+    --shadow-btn:            0 6px 18px rgba(0, 0, 0, 0.45);
+    --btn-sheen-color:       rgba(255, 255, 255, 0.06);
+    --btn-sheen-opacity:     0.6;
+
+    color-scheme: dark;
+}
 
 * {
     margin: 0;
@@ -20,109 +124,44 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* ==========================================================================
-   2. DESIGN TOKENS
-   ========================================================================== */
-
-:root {
-    /* Brand palette */
-    --color-yellow:       #efcc6e;
-    --color-yellow-dark:  #d4b45a;
-    --color-beige:        #cfbeae;
-    --color-brown:        #968a79;
-    --color-black:        #0b0907;
-    --color-white:        #ffffff;
-
-    /* Semantic aliases — light mode */
-    --primary-color:      var(--color-yellow);
-    --primary-dark:       var(--color-yellow-dark);
-    --accent-color:       var(--color-brown);
-    --muted:              var(--color-beige);
-
-    --bg-color:           #f6f5f3;
-    --bg-alt:             #e5e5e5;        /* alternating / elevated sections */
-    --text-color:         var(--color-black);
-    --text-secondary:     #666666;
-    --panel-bg:           var(--color-white);
-    --panel-text:         #333333;
-    --border-color:       #dcd4c9;
-
-    --footer-bg:          var(--text-color);
-    --footer-text:        var(--color-white);
-
-    /* Shared */
-    --btn-text:           var(--panel-text);
-    --radius-sm:          6px;
-    --radius-md:          12px;
-    --radius-pill:        20px;
-    --radius-circle:      50%;
-    --transition:         0.3s;
-    --section-padding:    6rem 0;
-}
-
-/* Dark mode — media query (system preference) */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color:       #0b0907;
-        --bg-alt:         #2a2a2a;
-        --text-color:     #e8e5e2;
-        --text-secondary: #cfcfcf;
-        --panel-bg:       #2a2a2a;
-        --panel-text:     #e0e0e0;
-        --border-color:   #333333;
-        --accent-color:   var(--color-beige);
-        --footer-bg:      #070707;
-        --footer-text:    #dcdcdc;
-        --btn-text:       var(--panel-text);
-    }
-}
-
-/* ==========================================================================
-   3. EXPLICIT THEME CLASSES (JS toggle overrides)
-   ========================================================================== */
-
-body.light-mode {
-    --bg-color:       #f6f5f3 !important;
-    --bg-alt:         #e5e5e5 !important;
-    --text-color:     var(--color-black) !important;
-    --text-secondary: #666666 !important;
-    --panel-bg:       var(--color-white) !important;
-    --panel-text:     #333333 !important;
-    --border-color:   #dcd4c9 !important;
-    --footer-bg:      var(--text-color) !important;
-    --footer-text:    var(--color-white) !important;
-    --primary-color:  var(--color-yellow) !important;
-    --primary-dark:   var(--color-yellow-dark) !important;
-    --color-yellow: #F6BE00;
-}
-
-body.dark-mode {
-    --bg-color:       #0b0907 !important;
-    --bg-alt:         #2a2a2a !important;
-    --text-color:     #e8e5e2 !important;
-    --text-secondary: #cfcfcf !important;
-    --panel-bg:       #2a2a2a !important;
-    --panel-text:     #e0e0e0 !important;
-    --border-color:   #333333 !important;
-    --footer-bg:      #070707 !important;
-    --footer-text:    #dcdcdc !important;
-    --primary-color:  var(--color-yellow) !important;
-    --primary-dark:   var(--color-yellow-dark) !important;
-}
-
-/* ==========================================================================
-   4. LAYOUT UTILITIES
-   ========================================================================== */
-
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-/* ==========================================================================
-   5. NAVIGATION
-   ========================================================================== */
+.about,
+.skills,
+.experience,
+.contact {
+    padding: var(--section-padding);
+}
+
+.about,
+.experience {
+    background: var(--bg-color);
+    transition: background var(--transition);
+}
+
+.skills,
+.contact {
+    background: var(--bg-alt);
+    transition: background var(--transition);
+}
+
+.about h2,
+.skills h2,
+.experience h2,
+.contact h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.skills h2,
+.experience h2 {
+    margin-bottom: 3rem;
+}
 
 .navbar {
     position: sticky;
@@ -149,7 +188,6 @@ body.dark-mode {
     gap: 1.5rem;
 }
 
-/* Hamburger button */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -173,7 +211,6 @@ body.dark-mode {
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile menu panel */
 .mobile-menu {
     display: none;
     flex-direction: column;
@@ -247,10 +284,6 @@ body.light-mode .logo-light { display: block; }
     transition: color var(--transition);
 }
 
-.nav-link:hover {
-    color: var(--primary-color);
-}
-
 .nav-link::after {
     content: '';
     position: absolute;
@@ -262,11 +295,17 @@ body.light-mode .logo-light { display: block; }
     transition: width var(--transition);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
-/* Language switch */
+.nav-link:hover,
+.nav-link.active,
+.lang-switch:hover {
+    color: var(--primary-color);
+}
+
 .lang-switch {
     color: var(--text-secondary);
     text-decoration: none;
@@ -276,11 +315,6 @@ body.light-mode .logo-light { display: block; }
     transition: color var(--transition);
 }
 
-.lang-switch:hover {
-    color: var(--primary-color);
-}
-
-/* Theme toggle button */
 .theme-toggle {
     display: flex;
     align-items: center;
@@ -299,10 +333,6 @@ body.light-mode .logo-light { display: block; }
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
-
-/* ==========================================================================
-   6. HERO SECTION
-   ========================================================================== */
 
 .hero {
     min-height: 600px;
@@ -349,10 +379,6 @@ body.light-mode .logo-light { display: block; }
     margin-top: 1.25rem;
 }
 
-/* ==========================================================================
-   7. BUTTONS
-   ========================================================================== */
-
 .btn {
     display: inline-block;
     padding: 0.75rem 2rem;
@@ -366,38 +392,33 @@ body.light-mode .logo-light { display: block; }
 }
 
 .btn-primary {
-    background: #efcc6e;
-    border-color: #efcc6e;
-    color: #333333;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--btn-text);
 }
 
 .btn-primary:hover {
-    background: #d4b45a;
-    border-color: #d4b45a;
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Animated (sheen) button */
 .btn-animated {
     position: relative;
     overflow: hidden;
     display: inline-block;
     padding: 0.85rem 2.25rem;
     min-width: 160px;
-    border: 2px solid #efcc6e;
+    border: 2px solid var(--primary-color);
     border-radius: var(--radius-md);
-    background: #efcc6e;
-    color: #333333;
+    background: var(--primary-color);
+    color: var(--btn-text);
     font-weight: 700;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 8px 22px rgba(11, 9, 7, 0.08);
+    box-shadow: var(--shadow-btn);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-body.dark-mode .btn-animated {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
 .btn-animated span {
@@ -406,7 +427,6 @@ body.dark-mode .btn-animated {
     display: inline-block;
 }
 
-/* Hover sweep */
 .btn-animated::before {
     content: "";
     position: absolute;
@@ -433,7 +453,6 @@ body.dark-mode .btn-animated {
     transform: translateY(1px) scale(0.997);
 }
 
-/* Continuous sheen */
 .btn-animated::after {
     content: "";
     position: absolute;
@@ -443,33 +462,19 @@ body.dark-mode .btn-animated {
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(255, 255, 255, 0.12) 50%,
+        var(--btn-sheen-color) 50%,
         transparent 100%
     );
     mix-blend-mode: overlay;
-    opacity: 0.9;
+    opacity: var(--btn-sheen-opacity);
     transform: translateX(-120%);
     animation: btn-sheen 2.2s linear infinite;
-}
-
-body.dark-mode .btn-animated::after {
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.06) 50%,
-        transparent 100%
-    );
-    opacity: 0.6;
 }
 
 @keyframes btn-sheen {
     from { transform: translateX(-120%); }
     to   { transform: translateX(120%); }
 }
-
-/* ==========================================================================
-   8. SOCIAL / ICON LINKS
-   ========================================================================== */
 
 .icon {
     width: 20px;
@@ -517,21 +522,8 @@ body.dark-mode .btn-animated::after {
     gap: 1.5rem;
 }
 
-/* ==========================================================================
-   9. ABOUT SECTION
-   ========================================================================== */
-
-.about {
-    padding: var(--section-padding);
-    background: var(--bg-color);
-    transition: background var(--transition);
-}
-
 .about h2 {
-    font-size: 2.5rem;
     margin-bottom: 2rem;
-    text-align: center;
-    color: var(--text-color);
 }
 
 .about-content {
@@ -544,27 +536,7 @@ body.dark-mode .btn-animated::after {
     font-size: 1.05rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
-    color: var(--text-color);
-}
-
-body.dark-mode .about-content p {
-    color: #d0d0d0;
-}
-
-/* ==========================================================================
-   10. SKILLS SECTION
-   ========================================================================== */
-
-.skills {
-    padding: var(--section-padding);
-    background: var(--bg-alt);
-}
-
-.skills h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    color: var(--text-color);
+    color: var(--text-body);
 }
 
 .skills-grid {
@@ -600,25 +572,8 @@ body.dark-mode .about-content p {
 .skill-tag:hover {
     background: var(--primary-color);
     border-color: var(--primary-color);
-    color: var(--panel-bg);        /* inverts automatically per theme */
+    color: var(--panel-bg);
     transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   11. EXPERIENCE SECTION
-   ========================================================================== */
-
-.experience {
-    padding: var(--section-padding);
-    background: var(--bg-color);
-    transition: background var(--transition);
-}
-
-.experience h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    color: var(--text-color);
 }
 
 .job {
@@ -683,11 +638,7 @@ body.dark-mode .about-content p {
     padding-left: 1.5rem;
     margin-bottom: 0.75rem;
     line-height: 1.7;
-    color: var(--text-color);
-}
-
-body.dark-mode .job-details li {
-    color: #d0d0d0;
+    color: var(--text-body);
 }
 
 .job-details li::before {
@@ -698,20 +649,8 @@ body.dark-mode .job-details li {
     font-weight: bold;
 }
 
-/* ==========================================================================
-   12. CONTACT SECTION
-   ========================================================================== */
-
-.contact {
-    padding: var(--section-padding);
-    background: var(--bg-alt);
-}
-
 .contact h2 {
-    font-size: 2.5rem;
     margin-bottom: 1rem;
-    text-align: center;
-    color: var(--text-color);
 }
 
 .contact-intro {
@@ -743,10 +682,6 @@ body.dark-mode .job-details li {
     color: var(--primary-dark);
 }
 
-/* ==========================================================================
-   13. FOOTER
-   ========================================================================== */
-
 .footer {
     padding: 2rem;
     background: var(--footer-bg);
@@ -759,9 +694,34 @@ body.dark-mode .job-details li {
     opacity: 0.8;
 }
 
-/* ==========================================================================
-   14. CAT WIDGET
-   ========================================================================== */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: var(--btn-text);
+    border: none;
+    border-radius: var(--radius-circle);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 999;
+    box-shadow: var(--shadow-btn);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.scroll-to-top.visible {
+    display: flex;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(11, 9, 7, 0.18);
+}
 
 .sour-gummy-100 {
     font-family: "Sour Gummy", sans-serif;
@@ -783,43 +743,20 @@ body.dark-mode .job-details li {
     padding: 16px;
     border: none;
     border-radius: var(--radius-sm);
-    background-color: #ffffff;
-    color: #333333;
+    background-color: var(--surface-elevated);
+    color: var(--surface-elevated-text);
     font-size: 18px;
     cursor: pointer;
-    transition: background-color var(--transition);
+    transition: background-color var(--transition), color var(--transition);
     text-decoration: none;
     text-align: center;
 }
 
 .side-select:hover {
-    background-color: #efcc6e;
-    color: #333333;
+    background-color: var(--primary-color);
+    color: var(--btn-text);
 }
 
-body.dark-mode .side-select {
-    background-color: #404040;
-    color: #e0e0e0;
-}
-
-body.dark-mode .side-select:hover {
-    background-color: #efcc6e;
-    color: #0b0907;
-}
-
-@media (prefers-color-scheme: dark) {
-    .side-select {
-        background-color: #404040;
-        color: #e0e0e0;
-    }
-
-    .side-select:hover {
-        background-color: #efcc6e;
-        color: #0b0907;
-    }
-}
-
-/* Sleep "z z z" float */
 .sleep-symbol {
     margin-left: 260px;
     margin-bottom: -40px;
@@ -844,7 +781,6 @@ body.dark-mode .side-select:hover {
     100% { opacity: 0; transform: translateY(-60px) scale(1.5); }
 }
 
-/* Cat SVG positioning */
 .thecat {
     position: relative;
     z-index: 2;
@@ -856,7 +792,6 @@ body.dark-mode .side-select:hover {
 #tail     { visibility: visible; }
 #longtail { visibility: hidden; }
 
-/* Eye / sleep interactions */
 .mouse-detector {
     padding: 20px 30px 30px 30px;
 }
@@ -868,28 +803,13 @@ body.dark-mode .side-select:hover {
 .thecat #eyesdown { visibility: hidden; }
 .cat:has(.side-select:hover) #eyesdown { visibility: visible; }
 
-/* Instructions */
 .instructions {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 4rem;
-    color: #444444;
-}
-
-body.dark-mode .instructions {
     color: var(--text-secondary);
 }
-
-@media (prefers-color-scheme: dark) {
-    .instructions {
-        color: var(--text-secondary);
-    }
-}
-
-/* ==========================================================================
-   15. RESPONSIVE — TABLET (≤ 768px)
-   ========================================================================== */
 
 @media (max-width: 768px) {
     :root {
@@ -916,10 +836,6 @@ body.dark-mode .instructions {
 
     .skills-grid { grid-template-columns: 1fr; }
 }
-
-/* ==========================================================================
-   16. RESPONSIVE — MOBILE (≤ 480px)
-   ========================================================================== */
 
 @media (max-width: 480px) {
     :root {
@@ -952,7 +868,7 @@ body.dark-mode .instructions {
 }
 
 @media (max-width: 1023px) {
-  .hero {
-    min-height: 400px;
-  }
+    .hero {
+        min-height: 400px;
+    }
 }
