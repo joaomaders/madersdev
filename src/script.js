@@ -267,7 +267,6 @@ initPawEffect('experience');
         updateSize();
     }
 
-    const HINT_KEY = 'devicePreviewSeen';
     let hintShowTimer, hintHideTimer;
 
     function cancelHint() {
@@ -276,19 +275,17 @@ initPawEffect('experience');
         triggerBtn.classList.remove('hint');
     }
 
-    if (!localStorage.getItem(HINT_KEY)) {
-        hintShowTimer = setTimeout(() => {
-            if (isOpen) return;
-            triggerBtn.classList.add('hint');
-            hintHideTimer = setTimeout(() => triggerBtn.classList.remove('hint'), 5000);
-        }, 10000);
-    }
+    hintShowTimer = setTimeout(function showHint() {
+        if (isOpen) return;
+        triggerBtn.classList.add('hint');
+        hintHideTimer = setTimeout(() => {
+            triggerBtn.classList.remove('hint');
+            hintShowTimer = setTimeout(showHint, 10000);
+        }, 4000);
+    }, 3000);
 
     function open() {
-        if (!localStorage.getItem(HINT_KEY)) {
-            localStorage.setItem(HINT_KEY, '1');
-            cancelHint();
-        }
+        cancelHint();
         iframe.src = window.location.href;
         overlay.classList.add('open');
         document.body.style.overflow = 'hidden';
