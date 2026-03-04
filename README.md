@@ -7,41 +7,57 @@ A clean, modern portfolio website built with HTML, CSS, and JavaScript. Inspired
 - 🎨 **Modern Design** - Clean, professional layout with smooth animations
 - 📱 **Responsive** - Works perfectly on desktop, tablet, and mobile
 - ⚡ **Fast** - Lightweight, no frameworks, pure HTML/CSS/JS
-- 🔍 **SEO Friendly** - Semantic HTML structure
-- ♿ **Accessible** - WCAG compliant markup
-- 🎯 **Smooth Scrolling** - Native smooth scroll behavior
+- 🌐 **Bilingual** - English (root) and Portuguese (br/)
+- 🔍 **SEO Friendly** - Semantic HTML, sitemap, robots.txt, hreflang
+- ♿ **Accessible** - WCAG-oriented markup, reduced-motion support, aria-labels
+- 🎯 **Smooth Scrolling** - Native smooth scroll (respects prefers-reduced-motion)
 - 📊 **Sections Included**:
   - Hero section with CTA
   - About me
   - Skills (categorized)
   - Work experience (4 positions)
-  - Contact information
+  - Contact information (with cat widget)
   - Social links
 
 ## Project Structure
 
 ```
-maders/
-├── index.html          # Main HTML file
+madersdev/
+├── index.html              # English (EN)
+├── br/
+│   └── index.html          # Portuguese (PT-BR)
 ├── src/
-│   ├── styles.css      # All styles
-│   └── script.js       # JavaScript functionality
-└── README.md           # This file
+│   ├── styles.css         # Main stylesheet (imports layers)
+│   ├── css/
+│   │   ├── variables.css  # Theme and color tokens
+│   │   ├── base.css       # Reset, body, container
+│   │   ├── layout.css     # Sections, nav, hero, content, footer
+│   │   ├── components.css # Buttons, social, cat widget
+│   │   └── device-preview.css
+│   ├── js/
+│   │   ├── theme.js       # Dark/light toggle
+│   │   ├── nav.js         # Hamburger, scroll spy
+│   │   ├── scroll.js      # Scroll-to-top, scroll animations
+│   │   ├── effects.js    # Footer year, paw effect
+│   │   └── device-preview.js
+│   ├── john-maders.png
+│   ├── maders-dev-header-logo.svg
+│   └── maders-dev-header-logo-black.svg
+├── sitemap.xml
+├── robots.txt
+└── README.md
 ```
 
 ## Getting Started
 
 1. **Open in Browser**
-   - Simply open `index.html` in any modern web browser
+   - Open `index.html` in any modern web browser (EN) or `br/index.html` (PT)
 
 2. **Using a Local Server (Recommended)**
    ```bash
    # Python 3
    python3 -m http.server 8000
-   
-   # Python 2
-   python -m SimpleHTTPServer 8000
-   
+
    # Node.js (http-server)
    npx http-server
    ```
@@ -50,32 +66,21 @@ maders/
 ## Customization
 
 ### Update Personal Information
-Edit `index.html` and update:
-- Name and subtitle
-- About section content
-- Skills (add/remove tags in skill groups)
-- Experience entries (add/remove jobs)
-- Contact email and phone
-- Social media links
+- **English:** Edit `index.html` (name, about, skills, experience, contact, social links).
+- **Portuguese:** Edit `br/index.html` the same way to keep both languages in sync.
 
 ### Modify Colors
-Edit the CSS variables in `src/styles.css`:
+Edit theme variables in `src/css/variables.css`:
 ```css
 :root {
-    --primary-color: #0066cc;      /* Main blue */
-    --text-color: #1a1a1a;         /* Dark text */
-    --light-bg: #f5f5f5;           /* Light background */
-    --secondary-text: #666;        /* Gray text */
+    --primary-color: var(--color-yellow);
+    --text-color: var(--color-black);
+    /* ... */
 }
 ```
 
 ### Change Fonts
-Update the font-family in `src/styles.css`:
-```css
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-}
-```
+Update `font-family` in `src/css/base.css` (body).
 
 ## Browser Support
 
@@ -86,9 +91,10 @@ body {
 
 ## Performance
 
-- No external dependencies
-- Single stylesheet (~10KB)
-- Single script file (~3KB)
+- No external dependencies or build step
+- CSS split into logical files (variables, base, layout, components, device-preview); main file imports them
+- JavaScript split into modules (theme, nav, scroll, effects, device-preview)
+- Preload for critical CSS and hero image
 - No jQuery or frameworks
 - Optimized CSS Grid and Flexbox
 
@@ -101,24 +107,11 @@ body {
 4. Publish directory: `/`
 5. Click Deploy
 
-### Deploy to Vercel
-1. Push code to GitHub
-2. Import project from Vercel dashboard
-3. Click Deploy
-
-### Deploy to GitHub Pages
-1. Push code to GitHub
-2. Go to Settings → Pages
-3. Select `main` branch as source
-4. Click Save
-5. Site will be available at `https://username.github.io/maders`
+### Deploy to Vercel / GitHub Pages
+Same idea: static site, publish root. For GitHub Pages, set source to `main` and root (or `/docs` if you use that folder).
 
 ### Deploy to Any Static Host
-Since this is a static site, you can deploy to:
-- AWS S3 + CloudFront
-- Azure Static Web Apps
-- Firebase Hosting
-- Any traditional web host (just upload files via FTP)
+Upload the repo as-is. Ensure `sitemap.xml` and `robots.txt` are at the root if you use a custom domain (e.g. maders.dev).
 
 ## License
 
